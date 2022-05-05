@@ -7,7 +7,13 @@ import routes from './routes';
 import AppError from '@shared/errors/AppError';
 import '@shared/typeorm';
 import uploadConfig from '@config/upload';
+import swaggerUi from 'swagger-ui-express';
+import * as swaggerDocument from './swagger/swagger.json';
 const app = express();
+
+const swaggerOptions = {
+  customCssUrl: './swagger/swaggerDark.css',
+};
 
 app.use(cors());
 app.use(express.json());
@@ -34,5 +40,6 @@ app.use(
 );
 
 app.listen(3333, () => {
+  app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   console.log('Server started on port 3333! 😎');
 });

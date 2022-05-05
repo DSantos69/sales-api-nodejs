@@ -1,0 +1,125 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a Restful Sales API with Node.js, Express, Typescript, TypeORM, Postgres and Redis",
+    "version": "1.0.0",
+    "title": "Sales API",
+    "contact": {
+      "email": "david.csantos69@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3333",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for users in the system"
+    },
+    {
+      "name": "UserToken",
+      "description": "API for users tokens in the system"
+    },
+    {
+      "name": "Password",
+      "description": "API for manage users password in the system"
+    },
+    {
+      "name": "Products",
+      "description": "API for users in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get all users in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#//users"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "updated_at": {
+          "type": "date"
+        }
+      }
+    },
+    "UserToken": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "uuid"
+        },
+        "token": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "uuid"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "updated_at": {
+          "type": "date"
+        }
+      }
+    },
+    "Product": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "quantity": {
+          "type": "number"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "updated_at": {
+          "type": "date"
+        }
+      }
+    }
+  }
+}
